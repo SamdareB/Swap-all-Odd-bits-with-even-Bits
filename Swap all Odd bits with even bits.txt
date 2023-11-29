@@ -1,0 +1,36 @@
+Given an Integer N swap all odd bits with adjacent even bits.
+
+Example: N = 4, Binary representation of 4 is 0100
+after swapping even wih odd bits 1000
+
+C++ Code:
+#include <bits/stdc++.h>
+using namespace std;
+
+int swapEvenOddBits(int N){
+	//Get all even bits of given number and set all even bits to 1 and odd bits to 0
+	int evenBits = (N & 0xAAAAAAAA);
+	
+	//Get all Odd bits of given number and set all Odd bits to 1 and even bits to 0.
+	
+	int oddBits = (N & 0x55555555);
+	
+	//Right shift to evenBits by 1;
+	evenBits = evenBits>>1;
+	
+	//Left shift to oddBits by 1;
+	oddBits = oddBits<<1;
+	
+	//return OR(|) of evenBits and oddBits
+	
+	return (evenBits | oddBits);
+	
+}
+
+int main() {
+	// your code goes here
+	int N;
+	cin>>N;
+	cout<<swapEvenOddBits(N)<<endl;
+	return 0;
+}
